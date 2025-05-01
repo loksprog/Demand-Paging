@@ -34,6 +34,8 @@
             lblJobs = new Label();
             btnGenerate = new Krypton.Toolkit.KryptonButton();
             panel1 = new Panel();
+            btnReset = new Krypton.Toolkit.KryptonButton();
+            lblJobTable = new Label();
             btnReplacePage = new Krypton.Toolkit.KryptonButton();
             btnLoadPages = new Krypton.Toolkit.KryptonButton();
             pnlJobTable = new Panel();
@@ -44,6 +46,7 @@
             pnlMemory = new Panel();
             pnlPageMapTable = new Panel();
             dgvPageMapTable = new DataGridView();
+            lblMemory = new Label();
             panel1.SuspendLayout();
             pnlJobTable.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvJobTable).BeginInit();
@@ -54,40 +57,40 @@
             // lblMemorySize
             // 
             lblMemorySize.AutoSize = true;
-            lblMemorySize.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblMemorySize.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblMemorySize.ForeColor = Color.White;
-            lblMemorySize.Location = new Point(72, 146);
+            lblMemorySize.Location = new Point(62, 144);
             lblMemorySize.Name = "lblMemorySize";
-            lblMemorySize.Size = new Size(110, 21);
+            lblMemorySize.Size = new Size(128, 25);
             lblMemorySize.TabIndex = 0;
             lblMemorySize.Text = "Memory Size";
             // 
             // lblFrames
             // 
             lblFrames.AutoSize = true;
-            lblFrames.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblFrames.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblFrames.ForeColor = Color.White;
-            lblFrames.Location = new Point(118, 182);
+            lblFrames.Location = new Point(115, 181);
             lblFrames.Name = "lblFrames";
-            lblFrames.Size = new Size(64, 21);
+            lblFrames.Size = new Size(75, 25);
             lblFrames.TabIndex = 2;
             lblFrames.Text = "Frames";
             // 
             // lblJobs
             // 
             lblJobs.AutoSize = true;
-            lblJobs.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblJobs.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblJobs.ForeColor = Color.White;
             lblJobs.Location = new Point(138, 218);
             lblJobs.Name = "lblJobs";
-            lblJobs.Size = new Size(44, 21);
+            lblJobs.Size = new Size(52, 25);
             lblJobs.TabIndex = 5;
             lblJobs.Text = "Jobs";
             // 
             // btnGenerate
             // 
             btnGenerate.Cursor = Cursors.Hand;
-            btnGenerate.Location = new Point(115, 271);
+            btnGenerate.Location = new Point(40, 271);
             btnGenerate.Name = "btnGenerate";
             btnGenerate.OverrideDefault.Back.Color1 = Color.FromArgb(39, 150, 255);
             btnGenerate.OverrideDefault.Back.Color2 = Color.FromArgb(39, 150, 255);
@@ -109,6 +112,7 @@
             btnGenerate.StateCommon.Border.Rounding = 20F;
             btnGenerate.StateCommon.Border.Width = 1;
             btnGenerate.StateCommon.Content.ShortText.Color1 = Color.White;
+            btnGenerate.StateCommon.Content.ShortText.Color2 = Color.White;
             btnGenerate.StateCommon.Content.ShortText.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnGenerate.StatePressed.Back.Color1 = Color.FromArgb(100, 180, 255);
             btnGenerate.StatePressed.Back.Color2 = Color.FromArgb(100, 180, 255);
@@ -138,6 +142,8 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(15, 10, 45);
+            panel1.Controls.Add(btnReset);
+            panel1.Controls.Add(lblJobTable);
             panel1.Controls.Add(btnReplacePage);
             panel1.Controls.Add(btnLoadPages);
             panel1.Controls.Add(pnlJobTable);
@@ -153,6 +159,73 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(368, 854);
             panel1.TabIndex = 6;
+            // 
+            // btnReset
+            // 
+            btnReset.Cursor = Cursors.Hand;
+            btnReset.Location = new Point(200, 271);
+            btnReset.Name = "btnReset";
+            btnReset.OverrideDefault.Back.Color1 = Color.White;
+            btnReset.OverrideDefault.Back.Color2 = Color.White;
+            btnReset.OverrideDefault.Border.Color1 = Color.White;
+            btnReset.OverrideDefault.Border.Color2 = Color.White;
+            btnReset.OverrideDefault.Border.GraphicsHint = Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            btnReset.OverrideDefault.Border.Rounding = 20F;
+            btnReset.OverrideDefault.Border.Width = 1;
+            btnReset.OverrideDefault.Content.ShortText.Color1 = Color.FromArgb(37, 37, 37);
+            btnReset.OverrideDefault.Content.ShortText.Color2 = Color.FromArgb(37, 37, 37);
+            btnReset.OverrideDefault.Content.ShortText.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnReset.OverrideDefault.Content.ShortText.Hint = Krypton.Toolkit.PaletteTextHint.AntiAlias;
+            btnReset.PaletteMode = Krypton.Toolkit.PaletteMode.ProfessionalSystem;
+            btnReset.Size = new Size(143, 42);
+            btnReset.StateCommon.Back.Color1 = Color.White;
+            btnReset.StateCommon.Back.Color2 = Color.White;
+            btnReset.StateCommon.Border.Color1 = Color.White;
+            btnReset.StateCommon.Border.Color2 = Color.White;
+            btnReset.StateCommon.Border.GraphicsHint = Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            btnReset.StateCommon.Border.Rounding = 20F;
+            btnReset.StateCommon.Border.Width = 1;
+            btnReset.StateCommon.Content.ShortText.Color1 = Color.FromArgb(37, 37, 37);
+            btnReset.StateCommon.Content.ShortText.Color2 = Color.FromArgb(37, 37, 37);
+            btnReset.StateCommon.Content.ShortText.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnReset.StateCommon.Content.ShortText.Hint = Krypton.Toolkit.PaletteTextHint.AntiAlias;
+            btnReset.StatePressed.Back.Color1 = Color.White;
+            btnReset.StatePressed.Back.Color2 = Color.White;
+            btnReset.StatePressed.Border.Color1 = Color.FromArgb(100, 180, 255);
+            btnReset.StatePressed.Border.Color2 = Color.FromArgb(100, 180, 255);
+            btnReset.StatePressed.Border.GraphicsHint = Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            btnReset.StatePressed.Border.Rounding = 20F;
+            btnReset.StatePressed.Border.Width = 2;
+            btnReset.StatePressed.Content.ShortText.Color1 = Color.FromArgb(37, 37, 37);
+            btnReset.StatePressed.Content.ShortText.Color2 = Color.FromArgb(37, 37, 37);
+            btnReset.StatePressed.Content.ShortText.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnReset.StatePressed.Content.ShortText.Hint = Krypton.Toolkit.PaletteTextHint.AntiAlias;
+            btnReset.StateTracking.Back.Color1 = Color.White;
+            btnReset.StateTracking.Back.Color2 = Color.White;
+            btnReset.StateTracking.Border.Color1 = Color.FromArgb(63, 162, 255);
+            btnReset.StateTracking.Border.Color2 = Color.FromArgb(63, 162, 255);
+            btnReset.StateTracking.Border.GraphicsHint = Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            btnReset.StateTracking.Border.Rounding = 20F;
+            btnReset.StateTracking.Border.Width = 2;
+            btnReset.StateTracking.Content.ShortText.Color1 = Color.FromArgb(37, 37, 37);
+            btnReset.StateTracking.Content.ShortText.Color2 = Color.FromArgb(37, 37, 37);
+            btnReset.StateTracking.Content.ShortText.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnReset.StateTracking.Content.ShortText.Hint = Krypton.Toolkit.PaletteTextHint.AntiAlias;
+            btnReset.TabIndex = 13;
+            btnReset.Values.DropDownArrowColor = Color.Empty;
+            btnReset.Values.Text = "Reset";
+            // 
+            // lblJobTable
+            // 
+            lblJobTable.AutoSize = true;
+            lblJobTable.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblJobTable.ForeColor = Color.White;
+            lblJobTable.Location = new Point(138, 355);
+            lblJobTable.Name = "lblJobTable";
+            lblJobTable.Size = new Size(105, 30);
+            lblJobTable.TabIndex = 12;
+            lblJobTable.Text = "Job Table";
+            lblJobTable.Visible = false;
             // 
             // btnReplacePage
             // 
@@ -266,6 +339,7 @@
             pnlJobTable.Name = "pnlJobTable";
             pnlJobTable.Size = new Size(282, 265);
             pnlJobTable.TabIndex = 9;
+            pnlJobTable.Visible = false;
             // 
             // dgvJobTable
             // 
@@ -283,67 +357,69 @@
             // txtbMemorySize
             // 
             txtbMemorySize.Cursor = Cursors.IBeam;
-            txtbMemorySize.Location = new Point(200, 146);
+            txtbMemorySize.Location = new Point(200, 143);
             txtbMemorySize.Name = "txtbMemorySize";
-            txtbMemorySize.Size = new Size(82, 23);
+            txtbMemorySize.Size = new Size(82, 30);
             txtbMemorySize.StateCommon.Back.Color1 = Color.White;
             txtbMemorySize.StateCommon.Border.Color1 = Color.White;
             txtbMemorySize.StateCommon.Border.Color2 = Color.White;
             txtbMemorySize.StateCommon.Border.GraphicsHint = Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
             txtbMemorySize.StateCommon.Border.Rounding = 5F;
             txtbMemorySize.StateCommon.Content.Color1 = Color.FromArgb(37, 37, 37);
-            txtbMemorySize.StateCommon.Content.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtbMemorySize.StateCommon.Content.Padding = new Padding(5, 1, 5, 1);
+            txtbMemorySize.StateCommon.Content.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtbMemorySize.StateCommon.Content.Padding = new Padding(5, 2, 5, 2);
             txtbMemorySize.TabIndex = 1;
             // 
             // txtbJobs
             // 
             txtbJobs.Cursor = Cursors.IBeam;
-            txtbJobs.Location = new Point(200, 218);
+            txtbJobs.Location = new Point(200, 217);
             txtbJobs.Name = "txtbJobs";
-            txtbJobs.Size = new Size(82, 23);
+            txtbJobs.Size = new Size(82, 28);
             txtbJobs.StateCommon.Back.Color1 = Color.White;
             txtbJobs.StateCommon.Border.Color1 = Color.White;
             txtbJobs.StateCommon.Border.Color2 = Color.White;
             txtbJobs.StateCommon.Border.GraphicsHint = Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
             txtbJobs.StateCommon.Border.Rounding = 5F;
             txtbJobs.StateCommon.Content.Color1 = Color.FromArgb(37, 37, 37);
-            txtbJobs.StateCommon.Content.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtbJobs.StateCommon.Content.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtbJobs.StateCommon.Content.Padding = new Padding(5, 1, 5, 1);
             txtbJobs.TabIndex = 3;
             // 
             // txtbFrames
             // 
             txtbFrames.Cursor = Cursors.IBeam;
-            txtbFrames.Location = new Point(200, 182);
+            txtbFrames.Location = new Point(200, 180);
             txtbFrames.Name = "txtbFrames";
-            txtbFrames.Size = new Size(82, 23);
+            txtbFrames.Size = new Size(82, 28);
             txtbFrames.StateCommon.Back.Color1 = Color.White;
             txtbFrames.StateCommon.Border.Color1 = Color.White;
             txtbFrames.StateCommon.Border.Color2 = Color.White;
             txtbFrames.StateCommon.Border.GraphicsHint = Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
             txtbFrames.StateCommon.Border.Rounding = 5F;
             txtbFrames.StateCommon.Content.Color1 = Color.FromArgb(37, 37, 37);
-            txtbFrames.StateCommon.Content.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtbFrames.StateCommon.Content.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtbFrames.StateCommon.Content.Padding = new Padding(5, 1, 5, 1);
             txtbFrames.TabIndex = 2;
             // 
             // pnlMemory
             // 
             pnlMemory.AutoScroll = true;
+            pnlMemory.AutoSize = true;
             pnlMemory.BorderStyle = BorderStyle.FixedSingle;
-            pnlMemory.Location = new Point(467, 182);
+            pnlMemory.Location = new Point(392, 227);
             pnlMemory.Name = "pnlMemory";
-            pnlMemory.Size = new Size(292, 544);
+            pnlMemory.Size = new Size(292, 377);
             pnlMemory.TabIndex = 7;
+            pnlMemory.Visible = false;
             // 
             // pnlPageMapTable
             // 
             pnlPageMapTable.AutoScroll = true;
             pnlPageMapTable.Controls.Add(dgvPageMapTable);
-            pnlPageMapTable.Location = new Point(828, 317);
+            pnlPageMapTable.Location = new Point(828, 146);
             pnlPageMapTable.Name = "pnlPageMapTable";
-            pnlPageMapTable.Size = new Size(729, 315);
+            pnlPageMapTable.Size = new Size(729, 580);
             pnlPageMapTable.TabIndex = 8;
             // 
             // dgvPageMapTable
@@ -354,8 +430,21 @@
             dgvPageMapTable.GridColor = Color.FromArgb(217, 217, 217);
             dgvPageMapTable.Location = new Point(0, 0);
             dgvPageMapTable.Name = "dgvPageMapTable";
-            dgvPageMapTable.Size = new Size(729, 315);
+            dgvPageMapTable.Size = new Size(729, 580);
             dgvPageMapTable.TabIndex = 100;
+            dgvPageMapTable.Visible = false;
+            // 
+            // lblMemory
+            // 
+            lblMemory.AutoSize = true;
+            lblMemory.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblMemory.ForeColor = Color.FromArgb(37, 37, 37);
+            lblMemory.Location = new Point(517, 194);
+            lblMemory.Name = "lblMemory";
+            lblMemory.Size = new Size(167, 30);
+            lblMemory.TabIndex = 13;
+            lblMemory.Text = "Memory (RAM)";
+            lblMemory.Visible = false;
             // 
             // MainFrame
             // 
@@ -363,6 +452,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(237, 237, 237);
             ClientSize = new Size(1586, 854);
+            Controls.Add(lblMemory);
             Controls.Add(pnlPageMapTable);
             Controls.Add(pnlMemory);
             Controls.Add(panel1);
@@ -377,6 +467,7 @@
             pnlPageMapTable.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvPageMapTable).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -396,5 +487,8 @@
         private DataGridView dgvPageMapTable;
         private Krypton.Toolkit.KryptonButton btnLoadPages;
         private Krypton.Toolkit.KryptonButton btnReplacePage;
+        private Label lblJobTable;
+        private Label lblMemory;
+        private Krypton.Toolkit.KryptonButton btnReset;
     }
 }

@@ -34,8 +34,7 @@
               "RelativeToolTip": "Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-28T14:30:52.162Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-28T14:30:52.162Z"
             },
             {
               "$type": "Document",
@@ -43,9 +42,9 @@
               "Title": "MainFrame.cs",
               "DocumentMoniker": "C:\\PLATECH\\Demand-Paging\\MainFrame.cs",
               "RelativeDocumentMoniker": "MainFrame.cs",
-              "ToolTip": "C:\\PLATECH\\Demand-Paging\\MainFrame.cs*",
-              "RelativeToolTip": "MainFrame.cs*",
-              "ViewState": "AgIAAHIBAAAAAAAAAAAQwJkBAAANAAAAAAAAAA==",
+              "ToolTip": "C:\\PLATECH\\Demand-Paging\\MainFrame.cs",
+              "RelativeToolTip": "MainFrame.cs",
+              "ViewState": "AgIAAJ0BAAAAAAAAAAAQwMQBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-28T14:30:44.146Z",
               "EditorCaption": ""
@@ -56,8 +55,8 @@
               "Title": "MainFrame.cs [Design]",
               "DocumentMoniker": "C:\\PLATECH\\Demand-Paging\\MainFrame.cs",
               "RelativeDocumentMoniker": "MainFrame.cs",
-              "ToolTip": "C:\\PLATECH\\Demand-Paging\\MainFrame.cs [Design]*",
-              "RelativeToolTip": "MainFrame.cs [Design]*",
+              "ToolTip": "C:\\PLATECH\\Demand-Paging\\MainFrame.cs [Design]",
+              "RelativeToolTip": "MainFrame.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-28T14:30:38.919Z",
               "EditorCaption": " [Design]"

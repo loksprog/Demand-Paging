@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Text;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -107,6 +108,8 @@ namespace Demand_Paging
 
             SetupJobTable(numJobs);
             btnLoadPages.Visible = true;
+            pnlJobTable.Visible = true;
+            lblJobTable.Visible = true;
         }
 
         private void SetupJobTable(int numJobs)
@@ -139,7 +142,7 @@ namespace Demand_Paging
             // Draw OS Kernel
             Label lblKernel = new Label
             {
-                Text = "0 MB - OS Kernel (10MB)",
+                Text = "0 MB -                                 OS Kernel (10MB)",
                 BackColor = Color.LightGray,
                 Size = new Size(350, FRAME_HEIGHT),
                 Location = new Point(10, 0),
@@ -213,35 +216,63 @@ namespace Demand_Paging
             }
         }
 
-
-
-        private void UpdatePageMapTable(Job job)
+        private void DisplayAllPageMapTables()
         {
-            dgvPageMapTable.Rows.Clear();
-            dgvPageMapTable.Columns.Clear();
+            pnlPageMapTable.Controls.Clear();
 
-            // Add columns if they don't exist
-            if (dgvPageMapTable.Columns.Count == 0)
+            int yOffset = 0;
+            foreach (var job in jobs)
             {
-                dgvPageMapTable.Columns.Add("PageNumber", "Page Number");
-                dgvPageMapTable.Columns.Add("FrameNumber", "Frame Number");
-                dgvPageMapTable.Columns.Add("StatusBit", "Status Bit");
-                dgvPageMapTable.Columns.Add("ModifiedBit", "Modified Bit");
-                dgvPageMapTable.Columns.Add("ReferenceBit", "Reference Bit");
-                dgvPageMapTable.Columns.Add("SwappedOutBit", "Swapped Out Bit");
-                dgvPageMapTable.Columns.Add("DiskLocation", "Disk Location");
-            }
+                Label title = new Label
+                {
+                    Text = $"Job-{job.JobNumber} Page Map Table",
+                    Font = new Font("Segoe UI", 10, FontStyle.Bold),
+                    Location = new Point(0, yOffset),
+                    AutoSize = true
+                };
+                pnlPageMapTable.Controls.Add(title);
+                yOffset += 20;
 
-            foreach (Page page in job.Pages)
-            {
-                dgvPageMapTable.Rows.Add(
-                    page.PageNumber,
-                    page.FrameNumber >= 0 ? page.FrameNumber.ToString() : "-",
-                    page.StatusBit,
-                    page.ModifiedBit,
-                    page.ReferenceBit,
-                    page.SwappedOutBit,
-                    page.DiskLocation + " MB");
+                DataGridView dgv = new DataGridView
+                {
+                    Location = new Point(0, yOffset),
+                    Width = 700,
+                    Height = 150,
+                    BackgroundColor = Color.FromArgb(15,10,45),
+                    ReadOnly = true,
+                    AllowUserToAddRows = false,
+                    ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize,
+                    AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill,
+                };
+
+                dgv.Columns.Add("PageNumber", "Page Number");
+                dgv.Columns.Add("FrameNumber", "Frame Number");
+                dgv.Columns.Add("StatusBit", "Status Bit");
+                dgv.Columns.Add("ModifiedBit", "Modified Bit");
+                dgv.Columns.Add("ReferenceBit", "Reference Bit");
+                dgv.Columns.Add("SwappedOutBit", "Swapped Out Bit");
+                dgv.Columns.Add("DiskLocation", "Disk Location");
+
+                foreach (Page page in job.Pages)
+                {
+                    string diskLocation = "";
+                    if (page.DiskLocation >= 0)
+                    {
+                        diskLocation = page.DiskLocation + " MB";
+                    }
+                    dgv.Rows.Add(
+                        page.PageNumber,
+                        page.FrameNumber >= 0 ? page.FrameNumber.ToString() : "-",
+                        page.StatusBit,
+                        page.ModifiedBit,
+                        page.ReferenceBit,
+                        page.SwappedOutBit,
+                        diskLocation
+                    );
+                }
+
+                pnlPageMapTable.Controls.Add(dgv);
+                yOffset += 160; // space after each table
             }
         }
 
@@ -273,8 +304,7 @@ namespace Demand_Paging
                         StatusBit = 0,
                         ModifiedBit = 1,
                         ReferenceBit = 1,
-                        SwappedOutBit = 0,
-                        DiskLocation = OS_KERNEL_SIZE + (i * frameSize)
+                        DiskLocation = -1
                     });
                 }
             }
@@ -300,6 +330,8 @@ namespace Demand_Paging
                 // Update page info
                 currentPage.FrameNumber = selectedFrame.FrameNumber;
                 currentPage.StatusBit = 1;
+                currentPage.DiskLocation = OS_KERNEL_SIZE + (selectedFrame.FrameNumber * frameSize);
+
 
                 // Set PMT location if this is the first page of the job
                 if (currentJob.PMTLocation == -1)
@@ -310,7 +342,7 @@ namespace Demand_Paging
 
                 // Update visualization
                 DrawMemory();
-                UpdatePageMapTable(currentJob);
+                DisplayAllPageMapTables();
 
                 // Move to next page
                 currentPageIndex++;
@@ -329,6 +361,10 @@ namespace Demand_Paging
                         return;
                     }
                 }
+                // Display
+                pnlMemory.Visible = true;
+                lblMemory.Visible = true;
+                dgvPageMapTable.Visible = true;
             }
             else
             {
@@ -337,6 +373,7 @@ namespace Demand_Paging
                 btnLoadPages.Visible = false;
                 MessageBox.Show("Memory full! Click 'Replace Page' to continue.");
             }
+
         }
 
         private void btnReplacePage_Click(object sender, EventArgs e)
@@ -374,6 +411,7 @@ namespace Demand_Paging
             currentPage.FrameNumber = frameToReplace.FrameNumber;
             currentPage.StatusBit = 1;
             currentPage.SwappedOutBit = 0;
+            currentPage.DiskLocation = OS_KERNEL_SIZE + (frameToReplace.FrameNumber * frameSize);
 
             // Set PMT location if this is the first page of the job
             if (currentJob.PMTLocation == -1)
@@ -384,7 +422,7 @@ namespace Demand_Paging
 
             // Update visualization
             DrawMemory();
-            UpdatePageMapTable(currentJob);
+            DisplayAllPageMapTables();
 
             // Move to next page
             currentPageIndex++;
