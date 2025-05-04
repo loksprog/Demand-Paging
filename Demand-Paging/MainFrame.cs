@@ -37,7 +37,6 @@ namespace Demand_Paging
             fifoQueue = new Queue<int>();
             jobs = new List<Job>();
             frames = new List<Frame>();
-
         }
 
         // Error Trappings
@@ -102,7 +101,7 @@ namespace Demand_Paging
                     JobNumber = i + 1,
                     Size = 0, // Will be set by user
                     Pages = new List<Page>(),
-                    PMTLocation = -1 // Will be set when first page is loaded
+                    PMTLocation = -1, // Will be set when first page is loaded
                 });
             }
 
@@ -238,7 +237,7 @@ namespace Demand_Paging
                     Location = new Point(0, yOffset),
                     Width = 700,
                     Height = 150,
-                    BackgroundColor = Color.FromArgb(15,10,45),
+                    BackgroundColor = Color.FromArgb(15, 10, 45),
                     ReadOnly = true,
                     AllowUserToAddRows = false,
                     ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize,
@@ -447,6 +446,48 @@ namespace Demand_Paging
                 btnLoadPages.Visible = true;
             }
         }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            // Clear textboxes
+            txtbMemorySize.Clear();
+            txtbFrames.Clear();
+            txtbJobs.Clear();
+
+            // Clear DataGridViews
+            dgvJobTable.Rows.Clear();
+            dgvJobTable.Columns.Clear();
+            dgvPageMapTable.Rows.Clear();
+            dgvPageMapTable.Columns.Clear();
+
+            // Clear custom panel with multiple PMTs if used
+            pnlPageMapTable.Controls.Clear();
+
+            // Clear memory visualization
+            pnlMemory.Controls.Clear();
+
+            // Reset all internal variables
+            memorySize = 0;
+            frameSize = 0;
+            numFrames = 0;
+            currentJobIndex = 0;
+            currentPageIndex = 0;
+            jobs.Clear();
+            frames.Clear();
+            fifoQueue.Clear();
+            jobColors.Clear();
+
+            // Hide buttons
+            btnLoadPages.Visible = false;
+            btnReplacePage.Visible = false;
+
+            // Hide Panels/Labels
+            pnlJobTable.Visible = false;
+            pnlMemory.Visible = false;
+            lblJobTable.Visible = false;
+            lblMemory.Visible = false;
+        }
+
     }
 }
 

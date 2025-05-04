@@ -33,7 +33,7 @@
             lblFrames = new Label();
             lblJobs = new Label();
             btnGenerate = new Krypton.Toolkit.KryptonButton();
-            panel1 = new Panel();
+            pnlLeft = new Panel();
             btnReset = new Krypton.Toolkit.KryptonButton();
             lblJobTable = new Label();
             btnReplacePage = new Krypton.Toolkit.KryptonButton();
@@ -47,11 +47,13 @@
             pnlPageMapTable = new Panel();
             dgvPageMapTable = new DataGridView();
             lblMemory = new Label();
-            panel1.SuspendLayout();
+            pnlRight = new Panel();
+            pnlLeft.SuspendLayout();
             pnlJobTable.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvJobTable).BeginInit();
             pnlPageMapTable.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvPageMapTable).BeginInit();
+            pnlRight.SuspendLayout();
             SuspendLayout();
             // 
             // lblMemorySize
@@ -139,26 +141,26 @@
             btnGenerate.Values.Text = "Generate";
             btnGenerate.Click += btnGenerate_Click;
             // 
-            // panel1
+            // pnlLeft
             // 
-            panel1.BackColor = Color.FromArgb(15, 10, 45);
-            panel1.Controls.Add(btnReset);
-            panel1.Controls.Add(lblJobTable);
-            panel1.Controls.Add(btnReplacePage);
-            panel1.Controls.Add(btnLoadPages);
-            panel1.Controls.Add(pnlJobTable);
-            panel1.Controls.Add(txtbMemorySize);
-            panel1.Controls.Add(txtbJobs);
-            panel1.Controls.Add(txtbFrames);
-            panel1.Controls.Add(btnGenerate);
-            panel1.Controls.Add(lblMemorySize);
-            panel1.Controls.Add(lblJobs);
-            panel1.Controls.Add(lblFrames);
-            panel1.Dock = DockStyle.Left;
-            panel1.Location = new Point(0, 0);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(368, 854);
-            panel1.TabIndex = 6;
+            pnlLeft.BackColor = Color.FromArgb(15, 10, 45);
+            pnlLeft.Controls.Add(btnReset);
+            pnlLeft.Controls.Add(lblJobTable);
+            pnlLeft.Controls.Add(btnReplacePage);
+            pnlLeft.Controls.Add(btnLoadPages);
+            pnlLeft.Controls.Add(pnlJobTable);
+            pnlLeft.Controls.Add(txtbMemorySize);
+            pnlLeft.Controls.Add(txtbJobs);
+            pnlLeft.Controls.Add(txtbFrames);
+            pnlLeft.Controls.Add(btnGenerate);
+            pnlLeft.Controls.Add(lblMemorySize);
+            pnlLeft.Controls.Add(lblJobs);
+            pnlLeft.Controls.Add(lblFrames);
+            pnlLeft.Dock = DockStyle.Left;
+            pnlLeft.Location = new Point(0, 0);
+            pnlLeft.Name = "pnlLeft";
+            pnlLeft.Size = new Size(368, 854);
+            pnlLeft.TabIndex = 6;
             // 
             // btnReset
             // 
@@ -214,6 +216,7 @@
             btnReset.TabIndex = 13;
             btnReset.Values.DropDownArrowColor = Color.Empty;
             btnReset.Values.Text = "Reset";
+            btnReset.Click += btnReset_Click;
             // 
             // lblJobTable
             // 
@@ -335,9 +338,9 @@
             // 
             pnlJobTable.AutoScroll = true;
             pnlJobTable.Controls.Add(dgvJobTable);
-            pnlJobTable.Location = new Point(46, 388);
+            pnlJobTable.Location = new Point(28, 388);
             pnlJobTable.Name = "pnlJobTable";
-            pnlJobTable.Size = new Size(282, 265);
+            pnlJobTable.Size = new Size(315, 265);
             pnlJobTable.TabIndex = 9;
             pnlJobTable.Visible = false;
             // 
@@ -351,7 +354,7 @@
             dgvJobTable.Location = new Point(0, 0);
             dgvJobTable.Name = "dgvJobTable";
             dgvJobTable.ScrollBars = ScrollBars.Vertical;
-            dgvJobTable.Size = new Size(282, 265);
+            dgvJobTable.Size = new Size(315, 265);
             dgvJobTable.TabIndex = 0;
             // 
             // txtbMemorySize
@@ -406,20 +409,19 @@
             // 
             pnlMemory.AutoScroll = true;
             pnlMemory.AutoSize = true;
-            pnlMemory.BorderStyle = BorderStyle.FixedSingle;
-            pnlMemory.Location = new Point(392, 227);
+            pnlMemory.Location = new Point(411, 66);
             pnlMemory.Name = "pnlMemory";
-            pnlMemory.Size = new Size(292, 377);
+            pnlMemory.Size = new Size(292, 491);
             pnlMemory.TabIndex = 7;
             pnlMemory.Visible = false;
             // 
             // pnlPageMapTable
             // 
-            pnlPageMapTable.AutoScroll = true;
+            pnlPageMapTable.AutoSize = true;
             pnlPageMapTable.Controls.Add(dgvPageMapTable);
-            pnlPageMapTable.Location = new Point(828, 146);
+            pnlPageMapTable.Location = new Point(839, 12);
             pnlPageMapTable.Name = "pnlPageMapTable";
-            pnlPageMapTable.Size = new Size(729, 580);
+            pnlPageMapTable.Size = new Size(700, 811);
             pnlPageMapTable.TabIndex = 8;
             // 
             // dgvPageMapTable
@@ -430,7 +432,7 @@
             dgvPageMapTable.GridColor = Color.FromArgb(217, 217, 217);
             dgvPageMapTable.Location = new Point(0, 0);
             dgvPageMapTable.Name = "dgvPageMapTable";
-            dgvPageMapTable.Size = new Size(729, 580);
+            dgvPageMapTable.Size = new Size(700, 811);
             dgvPageMapTable.TabIndex = 100;
             dgvPageMapTable.Visible = false;
             // 
@@ -439,12 +441,24 @@
             lblMemory.AutoSize = true;
             lblMemory.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblMemory.ForeColor = Color.FromArgb(37, 37, 37);
-            lblMemory.Location = new Point(517, 194);
+            lblMemory.Location = new Point(525, 24);
             lblMemory.Name = "lblMemory";
             lblMemory.Size = new Size(167, 30);
             lblMemory.TabIndex = 13;
             lblMemory.Text = "Memory (RAM)";
             lblMemory.Visible = false;
+            // 
+            // pnlRight
+            // 
+            pnlRight.AutoScroll = true;
+            pnlRight.Controls.Add(pnlPageMapTable);
+            pnlRight.Controls.Add(lblMemory);
+            pnlRight.Controls.Add(pnlMemory);
+            pnlRight.Dock = DockStyle.Fill;
+            pnlRight.Location = new Point(0, 0);
+            pnlRight.Name = "pnlRight";
+            pnlRight.Size = new Size(1586, 854);
+            pnlRight.TabIndex = 14;
             // 
             // MainFrame
             // 
@@ -452,22 +466,21 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(237, 237, 237);
             ClientSize = new Size(1586, 854);
-            Controls.Add(lblMemory);
-            Controls.Add(pnlPageMapTable);
-            Controls.Add(pnlMemory);
-            Controls.Add(panel1);
+            Controls.Add(pnlLeft);
+            Controls.Add(pnlRight);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "MainFrame";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Demand-Paging Memory Allocation Simulator";
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
+            pnlLeft.ResumeLayout(false);
+            pnlLeft.PerformLayout();
             pnlJobTable.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvJobTable).EndInit();
             pnlPageMapTable.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvPageMapTable).EndInit();
+            pnlRight.ResumeLayout(false);
+            pnlRight.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -476,7 +489,7 @@
         private Label lblFrames;
         private Label lblJobs;
         private Krypton.Toolkit.KryptonButton btnGenerate;
-        private Panel panel1;
+        private Panel pnlLeft;
         private Krypton.Toolkit.KryptonTextBox txtbJobs;
         private Krypton.Toolkit.KryptonTextBox txtbFrames;
         private Krypton.Toolkit.KryptonTextBox txtbMemorySize;
@@ -490,5 +503,6 @@
         private Label lblJobTable;
         private Label lblMemory;
         private Krypton.Toolkit.KryptonButton btnReset;
+        private Panel pnlRight;
     }
 }
