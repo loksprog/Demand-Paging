@@ -36,6 +36,7 @@
             groupLbl = new Label();
             titleLbl2 = new Label();
             titleLbl1 = new Label();
+            lblTitle1 = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)coverPic).BeginInit();
             SuspendLayout();
@@ -43,6 +44,7 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(15, 10, 45);
+            panel1.Controls.Add(lblTitle1);
             panel1.Controls.Add(minimizeBtn);
             panel1.Controls.Add(closeBtn);
             panel1.Controls.Add(coverPic);
@@ -66,9 +68,9 @@
             minimizeBtn.FlatAppearance.MouseDownBackColor = Color.FromArgb(142, 139, 166);
             minimizeBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(142, 139, 166);
             minimizeBtn.FlatStyle = FlatStyle.Flat;
-            minimizeBtn.Location = new Point(1071, 0);
+            minimizeBtn.Location = new Point(1084, 0);
             minimizeBtn.Name = "minimizeBtn";
-            minimizeBtn.Size = new Size(46, 41);
+            minimizeBtn.Size = new Size(36, 31);
             minimizeBtn.TabIndex = 8;
             minimizeBtn.UseVisualStyleBackColor = false;
             minimizeBtn.Click += minimizeBtn_Click;
@@ -83,9 +85,9 @@
             closeBtn.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 0, 0);
             closeBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 0, 0);
             closeBtn.FlatStyle = FlatStyle.Flat;
-            closeBtn.Location = new Point(1113, 0);
+            closeBtn.Location = new Point(1122, 0);
             closeBtn.Name = "closeBtn";
-            closeBtn.Size = new Size(46, 41);
+            closeBtn.Size = new Size(36, 31);
             closeBtn.TabIndex = 7;
             closeBtn.UseVisualStyleBackColor = false;
             closeBtn.Click += closeBtn_Click;
@@ -103,7 +105,7 @@
             // continueBtn
             // 
             continueBtn.Cursor = Cursors.Hand;
-            continueBtn.Location = new Point(157, 472);
+            continueBtn.Location = new Point(157, 454);
             continueBtn.Name = "continueBtn";
             continueBtn.OverrideDefault.Back.Color1 = Color.FromArgb(39, 150, 255);
             continueBtn.OverrideDefault.Back.Color2 = Color.FromArgb(39, 150, 255);
@@ -158,9 +160,9 @@
             groupLbl.ForeColor = Color.White;
             groupLbl.Location = new Point(74, 320);
             groupLbl.Name = "groupLbl";
-            groupLbl.Size = new Size(440, 42);
+            groupLbl.Size = new Size(391, 21);
             groupLbl.TabIndex = 2;
-            groupLbl.Text = "Group 1, consisting of Emil Yordan, Marju Faller, Luke Umpad, \r\nand Mark Abella";
+            groupLbl.Text = "Emil Yordan • Marju Faller • Luke Umpad • Mark Abella";
             // 
             // titleLbl2
             // 
@@ -183,6 +185,17 @@
             titleLbl1.Size = new Size(410, 65);
             titleLbl1.TabIndex = 0;
             titleLbl1.Text = "Demand-Paging";
+            // 
+            // lblTitle1
+            // 
+            lblTitle1.AutoSize = true;
+            lblTitle1.Font = new Font("Segoe UI Black", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblTitle1.ForeColor = Color.White;
+            lblTitle1.Location = new Point(74, 126);
+            lblTitle1.Name = "lblTitle1";
+            lblTitle1.Size = new Size(248, 30);
+            lblTitle1.TabIndex = 9;
+            lblTitle1.Text = "Simulator Program For";
             // 
             // Cover
             // 
@@ -210,5 +223,6 @@
         private PictureBox coverPic;
         private Button closeBtn;
         private Button minimizeBtn;
+        private Label lblTitle1;
     }
 }
