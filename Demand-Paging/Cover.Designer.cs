@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            lblMemberstxt = new Label();
+            lblLeadertxt = new Label();
+            lblLeader = new Label();
             lblTitle1 = new Label();
             minimizeBtn = new Button();
             closeBtn = new Button();
@@ -37,9 +40,6 @@
             lblMembers = new Label();
             titleLbl2 = new Label();
             titleLbl1 = new Label();
-            lblLeader = new Label();
-            lblLeadertxt = new Label();
-            lblMemberstxt = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)coverPic).BeginInit();
             SuspendLayout();
@@ -63,6 +63,39 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(1159, 646);
             panel1.TabIndex = 5;
+            // 
+            // lblMemberstxt
+            // 
+            lblMemberstxt.AutoSize = true;
+            lblMemberstxt.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblMemberstxt.ForeColor = Color.White;
+            lblMemberstxt.Location = new Point(74, 409);
+            lblMemberstxt.Name = "lblMemberstxt";
+            lblMemberstxt.Size = new Size(85, 21);
+            lblMemberstxt.TabIndex = 12;
+            lblMemberstxt.Text = "Members:";
+            // 
+            // lblLeadertxt
+            // 
+            lblLeadertxt.AutoSize = true;
+            lblLeadertxt.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblLeadertxt.ForeColor = Color.White;
+            lblLeadertxt.Location = new Point(74, 373);
+            lblLeadertxt.Name = "lblLeadertxt";
+            lblLeadertxt.Size = new Size(66, 21);
+            lblLeadertxt.TabIndex = 11;
+            lblLeadertxt.Text = "Leader:";
+            // 
+            // lblLeader
+            // 
+            lblLeader.AutoSize = true;
+            lblLeader.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblLeader.ForeColor = Color.White;
+            lblLeader.Location = new Point(146, 373);
+            lblLeader.Name = "lblLeader";
+            lblLeader.Size = new Size(93, 21);
+            lblLeader.TabIndex = 10;
+            lblLeader.Text = "Emil Yordan";
             // 
             // lblTitle1
             // 
@@ -177,9 +210,9 @@
             lblMembers.ForeColor = Color.White;
             lblMembers.Location = new Point(165, 409);
             lblMembers.Name = "lblMembers";
-            lblMembers.Size = new Size(294, 21);
+            lblMembers.Size = new Size(293, 21);
             lblMembers.TabIndex = 2;
-            lblMembers.Text = "Emil Yordan • Luke Umpad • Mark Abella";
+            lblMembers.Text = "Marju Faller • Luke Umpad • Mark Abella";
             // 
             // titleLbl2
             // 
@@ -202,39 +235,6 @@
             titleLbl1.Size = new Size(410, 65);
             titleLbl1.TabIndex = 0;
             titleLbl1.Text = "Demand-Paging";
-            // 
-            // lblLeader
-            // 
-            lblLeader.AutoSize = true;
-            lblLeader.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblLeader.ForeColor = Color.White;
-            lblLeader.Location = new Point(146, 373);
-            lblLeader.Name = "lblLeader";
-            lblLeader.Size = new Size(92, 21);
-            lblLeader.TabIndex = 10;
-            lblLeader.Text = "Marju Faller";
-            // 
-            // lblLeadertxt
-            // 
-            lblLeadertxt.AutoSize = true;
-            lblLeadertxt.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblLeadertxt.ForeColor = Color.White;
-            lblLeadertxt.Location = new Point(74, 373);
-            lblLeadertxt.Name = "lblLeadertxt";
-            lblLeadertxt.Size = new Size(66, 21);
-            lblLeadertxt.TabIndex = 11;
-            lblLeadertxt.Text = "Leader:";
-            // 
-            // lblMemberstxt
-            // 
-            lblMemberstxt.AutoSize = true;
-            lblMemberstxt.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblMemberstxt.ForeColor = Color.White;
-            lblMemberstxt.Location = new Point(74, 409);
-            lblMemberstxt.Name = "lblMemberstxt";
-            lblMemberstxt.Size = new Size(85, 21);
-            lblMemberstxt.TabIndex = 12;
-            lblMemberstxt.Text = "Members:";
             // 
             // Cover
             // 
