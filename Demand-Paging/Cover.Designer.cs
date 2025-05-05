@@ -34,9 +34,12 @@
             closeBtn = new Button();
             coverPic = new PictureBox();
             continueBtn = new Krypton.Toolkit.KryptonButton();
-            groupLbl = new Label();
+            lblMembers = new Label();
             titleLbl2 = new Label();
             titleLbl1 = new Label();
+            lblLeader = new Label();
+            lblLeadertxt = new Label();
+            lblMemberstxt = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)coverPic).BeginInit();
             SuspendLayout();
@@ -44,12 +47,15 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(15, 10, 45);
+            panel1.Controls.Add(lblMemberstxt);
+            panel1.Controls.Add(lblLeadertxt);
+            panel1.Controls.Add(lblLeader);
             panel1.Controls.Add(lblTitle1);
             panel1.Controls.Add(minimizeBtn);
             panel1.Controls.Add(closeBtn);
             panel1.Controls.Add(coverPic);
             panel1.Controls.Add(continueBtn);
-            panel1.Controls.Add(groupLbl);
+            panel1.Controls.Add(lblMembers);
             panel1.Controls.Add(titleLbl2);
             panel1.Controls.Add(titleLbl1);
             panel1.Dock = DockStyle.Fill;
@@ -116,7 +122,7 @@
             // continueBtn
             // 
             continueBtn.Cursor = Cursors.Hand;
-            continueBtn.Location = new Point(157, 454);
+            continueBtn.Location = new Point(159, 480);
             continueBtn.Name = "continueBtn";
             continueBtn.OverrideDefault.Back.Color1 = Color.FromArgb(39, 150, 255);
             continueBtn.OverrideDefault.Back.Color2 = Color.FromArgb(39, 150, 255);
@@ -164,16 +170,16 @@
             continueBtn.Values.Text = "Continue";
             continueBtn.Click += continueBtn_Click;
             // 
-            // groupLbl
+            // lblMembers
             // 
-            groupLbl.AutoSize = true;
-            groupLbl.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            groupLbl.ForeColor = Color.White;
-            groupLbl.Location = new Point(74, 342);
-            groupLbl.Name = "groupLbl";
-            groupLbl.Size = new Size(391, 21);
-            groupLbl.TabIndex = 2;
-            groupLbl.Text = "Emil Yordan • Marju Faller • Luke Umpad • Mark Abella";
+            lblMembers.AutoSize = true;
+            lblMembers.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblMembers.ForeColor = Color.White;
+            lblMembers.Location = new Point(165, 409);
+            lblMembers.Name = "lblMembers";
+            lblMembers.Size = new Size(294, 21);
+            lblMembers.TabIndex = 2;
+            lblMembers.Text = "Emil Yordan • Luke Umpad • Mark Abella";
             // 
             // titleLbl2
             // 
@@ -197,6 +203,39 @@
             titleLbl1.TabIndex = 0;
             titleLbl1.Text = "Demand-Paging";
             // 
+            // lblLeader
+            // 
+            lblLeader.AutoSize = true;
+            lblLeader.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblLeader.ForeColor = Color.White;
+            lblLeader.Location = new Point(146, 373);
+            lblLeader.Name = "lblLeader";
+            lblLeader.Size = new Size(92, 21);
+            lblLeader.TabIndex = 10;
+            lblLeader.Text = "Marju Faller";
+            // 
+            // lblLeadertxt
+            // 
+            lblLeadertxt.AutoSize = true;
+            lblLeadertxt.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblLeadertxt.ForeColor = Color.White;
+            lblLeadertxt.Location = new Point(74, 373);
+            lblLeadertxt.Name = "lblLeadertxt";
+            lblLeadertxt.Size = new Size(66, 21);
+            lblLeadertxt.TabIndex = 11;
+            lblLeadertxt.Text = "Leader:";
+            // 
+            // lblMemberstxt
+            // 
+            lblMemberstxt.AutoSize = true;
+            lblMemberstxt.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblMemberstxt.ForeColor = Color.White;
+            lblMemberstxt.Location = new Point(74, 409);
+            lblMemberstxt.Name = "lblMemberstxt";
+            lblMemberstxt.Size = new Size(85, 21);
+            lblMemberstxt.TabIndex = 12;
+            lblMemberstxt.Text = "Members:";
+            // 
             // Cover
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -218,11 +257,14 @@
         private Panel panel1;
         private Label titleLbl1;
         private Label titleLbl2;
-        private Label groupLbl;
+        private Label lblMembers;
         private Krypton.Toolkit.KryptonButton continueBtn;
         private PictureBox coverPic;
         private Button closeBtn;
         private Button minimizeBtn;
         private Label lblTitle1;
+        private Label lblLeader;
+        private Label lblLeadertxt;
+        private Label lblMemberstxt;
     }
 }
