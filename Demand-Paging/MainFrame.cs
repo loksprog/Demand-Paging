@@ -28,6 +28,7 @@ namespace Demand_Paging
         private Random random;
         private Dictionary<int, Color> jobColors;
         private Queue<int> fifoQueue;
+        private List<int> jobOrder;
 
         public MainFrame()
         {
@@ -37,6 +38,7 @@ namespace Demand_Paging
             fifoQueue = new Queue<int>();
             jobs = new List<Job>();
             frames = new List<Frame>();
+            jobOrder = new List<int>();
         }
 
         // Error Trappings
@@ -99,9 +101,10 @@ namespace Demand_Paging
                 jobs.Add(new Job
                 {
                     JobNumber = i + 1,
-                    Size = 0, // Will be set by user
+                    Size = 0, 
                     Pages = new List<Page>(),
-                    PMTLocation = -1, // Will be set when first page is loaded
+                    PMTLocation = -1,
+                    ArrivalTime = -1
                 });
             }
 
@@ -121,13 +124,30 @@ namespace Demand_Paging
             {
                 dgvJobTable.Columns.Add("JobNumber", "Job Number");
                 dgvJobTable.Columns.Add("JobSize", "Job Size (MB)");
+                dgvJobTable.Columns.Add("ArrivalTime", "Arrival Time (msec)");
                 dgvJobTable.Columns.Add("PMTLocation", "PMT Location");
             }
 
+            DataGridViewColumn arrivalTimeColumn = dgvJobTable.Columns["ArrivalTime"];
+            arrivalTimeColumn.DefaultCellStyle.Format = "N0"; // No decimals
+            arrivalTimeColumn.ValueType = typeof(int);
+
             for (int i = 0; i < numJobs; i++)
             {
-                dgvJobTable.Rows.Add(jobs[i].JobNumber, "", "");
+                dgvJobTable.Rows.Add(jobs[i].JobNumber, "", "", "");
             }
+
+            dgvJobTable.CellValidating += (sender, e) =>
+            {
+                if (e.ColumnIndex == dgvJobTable.Columns["ArrivalTime"].Index)
+                {
+                    if (!int.TryParse(e.FormattedValue.ToString(), out int arrivalTime) || arrivalTime < 0 || arrivalTime > 55)
+                    {
+                        e.Cancel = true;
+                        MessageBox.Show("Arrival time must be an integer between 0-55");
+                    }
+                }
+            };
         }
 
         private void DrawMemory()
@@ -220,8 +240,9 @@ namespace Demand_Paging
             pnlPageMapTable.Controls.Clear();
 
             int yOffset = 0;
-            foreach (var job in jobs)
+            foreach (var jobIndex in jobOrder)
             {
+                var job = jobs[jobIndex];
                 Label title = new Label
                 {
                     Text = $"Job-{job.JobNumber} Page Map Table",
@@ -277,13 +298,34 @@ namespace Demand_Paging
 
         private void btnLoadPages_Click(object sender, EventArgs e)
         {
+            // NEW: First, collect all arrival times and determine processing order
+            if (jobOrder.Count == 0)
+            {
+                Dictionary<int, int> jobArrivalTimes = new Dictionary<int, int>();
+                for (int i = 0; i < jobs.Count; i++)
+                {
+                    if (!int.TryParse(dgvJobTable.Rows[i].Cells["ArrivalTime"].Value?.ToString(), out int arrivalTime) || arrivalTime < 0)
+                    {
+                        MessageBox.Show($"Please enter a valid arrival time (0-55) for Job {jobs[i].JobNumber}");
+                        return;
+                    }
+                    jobs[i].ArrivalTime = arrivalTime;
+                    jobArrivalTimes.Add(i, arrivalTime);
+                }
+
+                // Order jobs by arrival time (earliest first)
+                jobOrder = jobArrivalTimes.OrderBy(x => x.Value).Select(x => x.Key).ToList();
+                currentJobIndex = 0;
+                currentPageIndex = 0;
+            }
+
             // Get current job
-            Job currentJob = jobs[currentJobIndex];
+            Job currentJob = jobs[jobOrder[currentJobIndex]];
 
             // If job size isn't set yet, get it from the table
             if (currentJob.Size == 0)
             {
-                if (!int.TryParse(dgvJobTable.Rows[currentJobIndex].Cells["JobSize"].Value?.ToString(), out int jobSize) || jobSize <= 0)
+                if (!int.TryParse(dgvJobTable.Rows[jobOrder[currentJobIndex]].Cells["JobSize"].Value?.ToString(), out int jobSize) || jobSize <= 0)
                 {
                     MessageBox.Show($"Please enter a valid size for Job {currentJob.JobNumber}");
                     return;
@@ -314,6 +356,7 @@ namespace Demand_Paging
             // Find all empty frames and pick one randomly
             var emptyFrames = frames.Where(f => !f.IsOccupied).ToList();
 
+
             if (emptyFrames.Count > 0)
             {
                 // Select a random empty frame
@@ -336,7 +379,7 @@ namespace Demand_Paging
                 if (currentJob.PMTLocation == -1)
                 {
                     currentJob.PMTLocation = OS_KERNEL_SIZE + (selectedFrame.FrameNumber * frameSize);
-                    dgvJobTable.Rows[currentJobIndex].Cells["PMTLocation"].Value = currentJob.PMTLocation + " MB";
+                    dgvJobTable.Rows[jobOrder[currentJobIndex]].Cells["PMTLocation"].Value = currentJob.PMTLocation + " MB";
                 }
 
                 // Update visualization
@@ -397,7 +440,7 @@ namespace Demand_Paging
             oldPage.FrameNumber = -1;
 
             // Get current job and page to load
-            Job currentJob = jobs[currentJobIndex];
+            Job currentJob = jobs[jobOrder[currentJobIndex]];
             Page currentPage = currentJob.Pages[currentPageIndex];
 
             // Assign the new page to the frame
@@ -416,7 +459,7 @@ namespace Demand_Paging
             if (currentJob.PMTLocation == -1)
             {
                 currentJob.PMTLocation = OS_KERNEL_SIZE + (frameToReplace.FrameNumber * frameSize);
-                dgvJobTable.Rows[currentJobIndex].Cells["PMTLocation"].Value = currentJob.PMTLocation + " MB";
+                dgvJobTable.Rows[jobOrder[currentJobIndex]].Cells["PMTLocation"].Value = currentJob.PMTLocation + " MB";
             }
 
             // Update visualization
@@ -476,6 +519,7 @@ namespace Demand_Paging
             frames.Clear();
             fifoQueue.Clear();
             jobColors.Clear();
+            jobOrder.Clear();
 
             // Hide buttons
             btnLoadPages.Visible = false;

@@ -13,6 +13,7 @@ namespace Demand_Paging
         public int Size { get; set; }
         public List<Page> Pages { get; set; }
 
+        public int ArrivalTime { get; set; }
         public int PMTLocation { get; set; }
     }
     public class Page

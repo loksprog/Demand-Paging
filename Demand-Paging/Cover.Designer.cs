@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            lblTitle1 = new Label();
             minimizeBtn = new Button();
             closeBtn = new Button();
             coverPic = new PictureBox();
@@ -36,7 +37,6 @@
             groupLbl = new Label();
             titleLbl2 = new Label();
             titleLbl1 = new Label();
-            lblTitle1 = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)coverPic).BeginInit();
             SuspendLayout();
@@ -57,6 +57,17 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(1159, 646);
             panel1.TabIndex = 5;
+            // 
+            // lblTitle1
+            // 
+            lblTitle1.AutoSize = true;
+            lblTitle1.Font = new Font("Segoe UI Black", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblTitle1.ForeColor = Color.White;
+            lblTitle1.Location = new Point(74, 148);
+            lblTitle1.Name = "lblTitle1";
+            lblTitle1.Size = new Size(248, 30);
+            lblTitle1.TabIndex = 9;
+            lblTitle1.Text = "Simulator Program For";
             // 
             // minimizeBtn
             // 
@@ -158,7 +169,7 @@
             groupLbl.AutoSize = true;
             groupLbl.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             groupLbl.ForeColor = Color.White;
-            groupLbl.Location = new Point(74, 320);
+            groupLbl.Location = new Point(74, 342);
             groupLbl.Name = "groupLbl";
             groupLbl.Size = new Size(391, 21);
             groupLbl.TabIndex = 2;
@@ -169,7 +180,7 @@
             titleLbl2.AutoSize = true;
             titleLbl2.Font = new Font("Segoe UI Black", 36F, FontStyle.Bold, GraphicsUnit.Point, 0);
             titleLbl2.ForeColor = Color.FromArgb(0, 129, 252);
-            titleLbl2.Location = new Point(65, 222);
+            titleLbl2.Location = new Point(65, 244);
             titleLbl2.Name = "titleLbl2";
             titleLbl2.Size = new Size(482, 65);
             titleLbl2.TabIndex = 1;
@@ -180,22 +191,11 @@
             titleLbl1.AutoSize = true;
             titleLbl1.Font = new Font("Segoe UI Black", 36F, FontStyle.Bold, GraphicsUnit.Point, 0);
             titleLbl1.ForeColor = Color.White;
-            titleLbl1.Location = new Point(65, 157);
+            titleLbl1.Location = new Point(65, 179);
             titleLbl1.Name = "titleLbl1";
             titleLbl1.Size = new Size(410, 65);
             titleLbl1.TabIndex = 0;
             titleLbl1.Text = "Demand-Paging";
-            // 
-            // lblTitle1
-            // 
-            lblTitle1.AutoSize = true;
-            lblTitle1.Font = new Font("Segoe UI Black", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblTitle1.ForeColor = Color.White;
-            lblTitle1.Location = new Point(74, 126);
-            lblTitle1.Name = "lblTitle1";
-            lblTitle1.Size = new Size(248, 30);
-            lblTitle1.TabIndex = 9;
-            lblTitle1.Text = "Simulator Program For";
             // 
             // Cover
             // 
