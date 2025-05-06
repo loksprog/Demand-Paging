@@ -40,6 +40,7 @@
             lblMembers = new Label();
             titleLbl2 = new Label();
             titleLbl1 = new Label();
+            lblGroupNumber = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)coverPic).BeginInit();
             SuspendLayout();
@@ -47,6 +48,7 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(15, 10, 45);
+            panel1.Controls.Add(lblGroupNumber);
             panel1.Controls.Add(lblMemberstxt);
             panel1.Controls.Add(lblLeadertxt);
             panel1.Controls.Add(lblLeader);
@@ -69,7 +71,7 @@
             lblMemberstxt.AutoSize = true;
             lblMemberstxt.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblMemberstxt.ForeColor = Color.White;
-            lblMemberstxt.Location = new Point(74, 409);
+            lblMemberstxt.Location = new Point(74, 443);
             lblMemberstxt.Name = "lblMemberstxt";
             lblMemberstxt.Size = new Size(85, 21);
             lblMemberstxt.TabIndex = 12;
@@ -80,7 +82,7 @@
             lblLeadertxt.AutoSize = true;
             lblLeadertxt.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblLeadertxt.ForeColor = Color.White;
-            lblLeadertxt.Location = new Point(74, 373);
+            lblLeadertxt.Location = new Point(74, 407);
             lblLeadertxt.Name = "lblLeadertxt";
             lblLeadertxt.Size = new Size(66, 21);
             lblLeadertxt.TabIndex = 11;
@@ -91,7 +93,7 @@
             lblLeader.AutoSize = true;
             lblLeader.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblLeader.ForeColor = Color.White;
-            lblLeader.Location = new Point(146, 373);
+            lblLeader.Location = new Point(146, 407);
             lblLeader.Name = "lblLeader";
             lblLeader.Size = new Size(93, 21);
             lblLeader.TabIndex = 10;
@@ -155,7 +157,7 @@
             // continueBtn
             // 
             continueBtn.Cursor = Cursors.Hand;
-            continueBtn.Location = new Point(159, 480);
+            continueBtn.Location = new Point(159, 500);
             continueBtn.Name = "continueBtn";
             continueBtn.OverrideDefault.Back.Color1 = Color.FromArgb(39, 150, 255);
             continueBtn.OverrideDefault.Back.Color2 = Color.FromArgb(39, 150, 255);
@@ -208,7 +210,7 @@
             lblMembers.AutoSize = true;
             lblMembers.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblMembers.ForeColor = Color.White;
-            lblMembers.Location = new Point(165, 409);
+            lblMembers.Location = new Point(165, 443);
             lblMembers.Name = "lblMembers";
             lblMembers.Size = new Size(293, 21);
             lblMembers.TabIndex = 2;
@@ -235,6 +237,17 @@
             titleLbl1.Size = new Size(410, 65);
             titleLbl1.TabIndex = 0;
             titleLbl1.Text = "Demand-Paging";
+            // 
+            // lblGroupNumber
+            // 
+            lblGroupNumber.AutoSize = true;
+            lblGroupNumber.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblGroupNumber.ForeColor = Color.White;
+            lblGroupNumber.Location = new Point(74, 375);
+            lblGroupNumber.Name = "lblGroupNumber";
+            lblGroupNumber.Size = new Size(78, 21);
+            lblGroupNumber.TabIndex = 13;
+            lblGroupNumber.Text = "GROUP 1";
             // 
             // Cover
             // 
@@ -266,5 +279,6 @@
         private Label lblLeader;
         private Label lblLeadertxt;
         private Label lblMemberstxt;
+        private Label lblGroupNumber;
     }
 }
