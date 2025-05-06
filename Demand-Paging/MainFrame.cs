@@ -124,7 +124,7 @@ namespace Demand_Paging
             {
                 dgvJobTable.Columns.Add("JobNumber", "Job Number");
                 dgvJobTable.Columns.Add("JobSize", "Job Size (MB)");
-                dgvJobTable.Columns.Add("ArrivalTime", "Arrival Time (msec)");
+                dgvJobTable.Columns.Add("ArrivalTime", "Arrival Time (0 - 55 msec)");
                 dgvJobTable.Columns.Add("PMTLocation", "PMT Location");
             }
 
